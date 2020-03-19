@@ -91,8 +91,4 @@ bugs.
 
 ## Author
 
- Alain Matthes
- 5 rue de Valence
- Paris 75005
-
- al (dot) ma (at) mac (dot) com
+Alain Matthes, 5 rue de Valence, Paris 75005, al (dot) ma (at) mac (dot) com
