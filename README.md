@@ -36,13 +36,13 @@ The different files must be moved into the different directories in your
 installation `TDS` tree or in your `TEXMFHOME`:
 
 ```
-  TDS:doc/latex/tkz-euclide/cheatsheet_euclide_1.pdf
-  TDS:doc/latex/tkz-euclide/Euclidean_geometry.pdf
-  TDS:doc/latex/tkz-euclide/cheatsheet_euclide_2.pdf
-  TDS:doc/latex/tkz-euclide/TKZdoc-euclide.pdf
-  TDS:doc/latex/tkz-euclide/examples/*.*
-  TDS:doc/latex/tkz-euclide/sourcedoc/*.*
-  TDS:tex/latex/tkz-euclide/*.*
+  doc/cheatsheet_euclide_2.pdf -> TDS:doc/latex/tkz-euclide/cheatsheet_euclide_2.pdf
+  doc/cheatsheet_euclide_1.pdf -> TDS:doc/latex/tkz-euclide/cheatsheet_euclide_1.pdf
+  doc/Euclidean_geometry.pdf   -> TDS:doc/latex/tkz-euclide/Euclidean_geometry.pdf
+  doc/TKZdoc-euclide.pdf       -> TDS:doc/latex/tkz-euclide/TKZdoc-euclide.pdf
+  doc/examples/*.*             -> TDS:doc/latex/tkz-euclide/examples/*.*
+  doc/sourcedoc/*.*            -> TDS:doc/latex/tkz-euclide/sourcedoc/*.*
+  code/*.*                     -> TDS:tex/latex/tkz-euclide/*.*
 ```
 
 ## How to use it

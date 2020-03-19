@@ -5,13 +5,13 @@ tkzeuclided = "2020/03/08"
 
 sourcefiledir = "code"
 docfiledir    = "doc"
-textfiles     = {"./README"}
+textfiles     = {"README.md"}
 docfiles      = {
   "sourcedoc/*.tex",
-  "doc/cheatsheet_euclide_1.pdf",
-  "doc/Euclidean_geometry.pdf",
-  "doc/cheatsheet_euclide_2.pdf",
-  "doc/TKZdoc-euclide.pdf",
+  "cheatsheet_euclide_1.pdf",
+  "Euclidean_geometry.pdf",
+  "cheatsheet_euclide_2.pdf",
+  "TKZdoc-euclide.pdf",
   "examples/*.*",
 }
 sourcefiles  = {"tkz-*.*"}
@@ -46,7 +46,7 @@ tdslocations = {
   "doc/latex/tkz-euclide/sourcedoc/TKZdoc-euclide-show.tex",
   "doc/latex/tkz-euclide/sourcedoc/TKZdoc-euclide-lines.tex",
   "doc/latex/tkz-euclide/sourcedoc/TKZdoc-euclide-tools.tex",
-  "doc/latex/tkz-euclide/sourcedoc/TKZdoc-euclide-main.tex",
+  "doc/latex/tkz-euclide/sourcedoc/TKZdoc-euclide.tex",
   "doc/latex/tkz-euclide/sourcedoc/TKZdoc-euclide-triangles.tex",
   "doc/latex/tkz-euclide/sourcedoc/TKZdoc-euclide-news.tex",
   "tex/latex/tkz-euclide/tkz-euclide.sty",
@@ -313,7 +313,7 @@ tdslocations = {
 }
 
 -- Update package date and version
-tagfiles = {"code/*.*"}
+tagfiles = {"code/*.*", "README.md"}
 
 function update_tag(file, content, tagname, tagdate)
   if string.match(file, "%.tex$") then
@@ -341,22 +341,26 @@ function update_tag(file, content, tagname, tagdate)
                           "\\ProvidesPackage{(.-)}%[%d%d%d%d%/%d%d%/%d%d %d+.%d+%a*(%s*.-)%]",
                           "\\ProvidesPackage{%1}["..tkzeuclided.." "..tkzeuclidev.."%2]")
   end
+  if string.match(file, "README.md$") then
+    content = string.gsub(content,
+                          "Release %d+.%d+%a* %d%d%d%d%/%d%d%/%d%d",
+                          "Release "..tkzeuclidev.." "..tkzeuclided)
+  end
   return content
 end
 
-typesetfiles = {"TKZdoc-euclide-main.tex"}
+typesetfiles = {"TKZdoc-euclide.tex"}
 
 local function type_manual()
   errorlevel = cp("*.TTF", "doc/sourcedoc", typesetdir)
-  local file = jobname("doc/sourcedoc/TKZdoc-euclide-main.tex")
-  runcmd("latexmk -lualatex -jobname=TKZdoc-euclide "..file..".tex", typesetdir, {"TEXINPUTS","LUAINPUTS"})
+  local file = jobname("doc/sourcedoc/TKZdoc-euclide.tex")
+  runcmd("lualatex "..file..".tex", typesetdir, {"TEXINPUTS","LUAINPUTS"})
   if errorlevel ~= 0 then
     error("Error!!: Typesetting "..file..".tex")
     return errorlevel
   end
-  cp("TKZdoc-euclide.pdf", typesetdir, "doc")
   return 0
 end
 
 specialtypesetting = { }
-specialtypesetting["TKZdoc-euclide-main.tex"] = {func = type_manual}
+specialtypesetting["TKZdoc-euclide.tex"] = {func = type_manual}
