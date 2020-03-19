@@ -324,8 +324,8 @@ function update_tag(file, content, tagname, tagdate)
                           "\\filedate{.-}",
                           "\\filedate{"..tkzeuclided.."}")
     content = string.gsub(content,
-                          "\\typeout{%d%d%d%d%/%d%d%/%d%d %d+.%d+%a*(%s*.-)}",
-                          "\\typeout{"..tkzeuclided.." "..tkzeuclidev.."%1}")
+                          "\\typeout{%d%d%d%d%/%d%d%/%d%d %d+.%d+%a* %s*(.-)}",
+                          "\\typeout{"..tkzeuclided.." "..tkzeuclidev.." %1}")
   end
   if string.match(file, "%.sty$") then
     content = string.gsub(content,
@@ -335,11 +335,11 @@ function update_tag(file, content, tagname, tagdate)
                           "\\filedate{.-}",
                           "\\filedate{"..tkzeuclided.."}")
     content = string.gsub(content,
-                          "\\typeout{%d%d%d%d%/%d%d%/%d%d %d+.%d+%a*(%s*.-)}",
-                          "\\typeout{"..tkzeuclided.." "..tkzeuclidev.."%1}")
+                          "\\typeout{%d%d%d%d%/%d%d%/%d%d %d+.%d+%a* %s*(.-)}",
+                          "\\typeout{"..tkzeuclided.." "..tkzeuclidev.." %1}")
     content = string.gsub(content,
-                          "\\ProvidesPackage{(.-)}%[%d%d%d%d%/%d%d%/%d%d %d+.%d+%a*(%s*.-)%]",
-                          "\\ProvidesPackage{%1}["..tkzeuclided.." "..tkzeuclidev.."%2]")
+                          "\\ProvidesPackage{(.-)}%[%d%d%d%d%/%d%d%/%d%d %d+.%d+%a* %s*(.-)%]",
+                          "\\ProvidesPackage{%1}["..tkzeuclided.." "..tkzeuclidev.." %2]")
   end
   if string.match(file, "README.md$") then
     content = string.gsub(content,
