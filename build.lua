@@ -2,16 +2,18 @@
 module = "tkz-euclide"
 tkzeuclidev = "3.05c"
 tkzeuclided = "2020/03/08"
+doctkzeuclv = tkzeuclidev -- Same as "3.05c"
+doctkzeucld = tkzeuclided -- Same as "2020/03/08"
 
 sourcefiledir = "code"
 docfiledir    = "doc"
 textfiles     = {"README.md"}
+ctanreadme    = "README.md"
 docfiles      = {
   "sourcedoc/*.tex",
   "cheatsheet_euclide_1.pdf",
   "Euclidean_geometry.pdf",
   "cheatsheet_euclide_2.pdf",
-  "TKZdoc-euclide.pdf",
   "examples/*.*",
 }
 sourcefiles  = {"tkz-*.*"}
@@ -313,7 +315,7 @@ tdslocations = {
 }
 
 -- Update package date and version
-tagfiles = {"code/*.*", "README.md"}
+tagfiles = {"code/*.*", "README.md","doc/sourcedoc/TKZdoc-euclide.tex"}
 
 function update_tag(file, content, tagname, tagdate)
   if string.match(file, "%.tex$") then
@@ -326,6 +328,18 @@ function update_tag(file, content, tagname, tagdate)
     content = string.gsub(content,
                           "\\typeout{%d%d%d%d%/%d%d%/%d%d %d+.%d+%a* %s*(.-)}",
                           "\\typeout{"..tkzeuclided.." "..tkzeuclidev.." %1}")
+    content = string.gsub(content,
+                          "\\gdef\\tkzversionofpack{.-}",
+                          "\\gdef\\tkzversionofpack{"..tkzeuclidev.."}")
+    content = string.gsub(content,
+                          "\\gdef\\tkzdateofpack{.-}",
+                          "\\gdef\\tkzdateofpack{"..tkzeuclided.."}")
+    content = string.gsub(content,
+                          "\\gdef\\tkzversionofdoc{.-}",
+                          "\\gdef\\tkzversionofdoc{"..doctkzeuclv.."}")
+    content = string.gsub(content,
+                          "\\gdef\\tkzdateofdoc{.-}",
+                          "\\gdef\\tkzdateofdoc{"..doctkzeucld.."}")
   end
   if string.match(file, "%.sty$") then
     content = string.gsub(content,
@@ -362,7 +376,9 @@ end
 
 local function type_manual()
   local file = jobname("doc/sourcedoc/TKZdoc-euclide.tex")
-  errorlevel = runcmd("latexmk -lualatex "..file..".tex", typesetdir, {"TEXINPUTS","LUAINPUTS"})
+  errorlevel = (runcmd("lualatex --draftmode "..file..".tex", typesetdir, {"TEXINPUTS","LUAINPUTS"})
+              + runcmd("lualatex --draftmode "..file..".tex", typesetdir, {"TEXINPUTS","LUAINPUTS"})
+              + runcmd("lualatex "..file..".tex", typesetdir, {"TEXINPUTS","LUAINPUTS"}))
   if errorlevel ~= 0 then
     error("Error!!: Typesetting "..file..".tex")
     return errorlevel
