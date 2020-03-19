@@ -325,7 +325,7 @@ function update_tag(file, content, tagname, tagdate)
                           "\\filedate{"..tkzeuclided.."}")
     content = string.gsub(content,
                           "\\typeout{%d%d%d%d%/%d%d%/%d%d %d+.%d+%a*(%s*.-)}",
-                          "\\typeout{"..tkzeuclided.." "..tkzeuclidev.."%1}" )
+                          "\\typeout{"..tkzeuclided.." "..tkzeuclidev.."%1}")
   end
   if string.match(file, "%.sty$") then
     content = string.gsub(content,
@@ -336,10 +336,27 @@ function update_tag(file, content, tagname, tagdate)
                           "\\filedate{"..tkzeuclided.."}")
     content = string.gsub(content,
                           "\\typeout{%d%d%d%d%/%d%d%/%d%d %d+.%d+%a*(%s*.-)}",
-                          "\\typeout{"..tkzeuclided.." "..tkzeuclidev.."%1}" )
+                          "\\typeout{"..tkzeuclided.." "..tkzeuclidev.."%1}")
     content = string.gsub(content,
                           "\\ProvidesPackage{(.-)}%[%d%d%d%d%/%d%d%/%d%d %d+.%d+%a*(%s*.-)%]",
                           "\\ProvidesPackage{%1}["..tkzeuclided.." "..tkzeuclidev.."%2]")
   end
   return content
 end
+
+typesetfiles = {"TKZdoc-euclide-main.tex"}
+
+local function type_manual()
+  errorlevel = cp("*.TTF", "doc/sourcedoc", typesetdir)
+  local file = jobname("doc/sourcedoc/TKZdoc-euclide-main.tex")
+  runcmd("latexmk -lualatex -jobname=TKZdoc-euclide "..file..".tex", typesetdir, {"TEXINPUTS","LUAINPUTS"})
+  if errorlevel ~= 0 then
+    error("Error!!: Typesetting "..file..".tex")
+    return errorlevel
+  end
+  cp("TKZdoc-euclide.pdf", typesetdir, "doc")
+  return 0
+end
+
+specialtypesetting = { }
+specialtypesetting["TKZdoc-euclide-main.tex"] = {func = type_manual}
