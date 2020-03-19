@@ -351,10 +351,18 @@ end
 
 typesetfiles = {"TKZdoc-euclide.tex"}
 
-local function type_manual()
+function docinit_hook()
   errorlevel = cp("*.TTF", "doc/sourcedoc", typesetdir)
+  if errorlevel ~= 0 then
+    error("** Error!!: Can't copy .TTF from doc/sourcedoc to "..typesetdir)
+    return errorlevel
+  end
+  return 0
+end
+
+local function type_manual()
   local file = jobname("doc/sourcedoc/TKZdoc-euclide.tex")
-  runcmd("lualatex "..file..".tex", typesetdir, {"TEXINPUTS","LUAINPUTS"})
+  errorlevel = runcmd("latexmk -lualatex "..file..".tex", typesetdir, {"TEXINPUTS","LUAINPUTS"})
   if errorlevel ~= 0 then
     error("Error!!: Typesetting "..file..".tex")
     return errorlevel
