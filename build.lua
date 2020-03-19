@@ -22,7 +22,7 @@ tdslocations = {
   "doc/latex/tkz-euclide/cheatsheet_euclide_1.pdf",
   "doc/latex/tkz-euclide/Euclidean_geometry.pdf",
   "doc/latex/tkz-euclide/cheatsheet_euclide_2.pdf",
-  "doc/latex/tkz-euclide/README",
+  "doc/latex/tkz-euclide/README.md",
   "doc/latex/tkz-euclide/TKZdoc-euclide.pdf",
   "doc/latex/tkz-euclide/sourcedoc/TKZdoc-euclide-angles.tex",
   "doc/latex/tkz-euclide/sourcedoc/TKZdoc-euclide-pointby.tex",
