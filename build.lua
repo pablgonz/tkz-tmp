@@ -311,3 +311,35 @@ tdslocations = {
   "doc/latex/tkz-euclide/examples/tkzEuclide-9.2.8.tex",
   "doc/latex/tkz-euclide/examples/tkzEuclide-9.3.1.tex",
 }
+
+-- Update package date and version
+tagfiles = {"code/*.*"}
+
+function update_tag(file, content, tagname, tagdate)
+  if string.match(file, "%.tex$") then
+    content = string.gsub(content,
+                          "\\fileversion{.-}",
+                          "\\fileversion{"..tkzeuclidev.."}")
+    content = string.gsub(content,
+                          "\\filedate{.-}",
+                          "\\filedate{"..tkzeuclided.."}")
+    content = string.gsub(content,
+                          "\\typeout{%d%d%d%d%/%d%d%/%d%d %d+.%d+%a*(%s*.-)}",
+                          "\\typeout{"..tkzeuclided.." "..tkzeuclidev.."%1}" )
+  end
+  if string.match(file, "%.sty$") then
+    content = string.gsub(content,
+                          "\\fileversion{.-}",
+                          "\\fileversion{"..tkzeuclidev.."}")
+    content = string.gsub(content,
+                          "\\filedate{.-}",
+                          "\\filedate{"..tkzeuclided.."}")
+    content = string.gsub(content,
+                          "\\typeout{%d%d%d%d%/%d%d%/%d%d %d+.%d+%a*(%s*.-)}",
+                          "\\typeout{"..tkzeuclided.." "..tkzeuclidev.."%1}" )
+    content = string.gsub(content,
+                          "\\ProvidesPackage{(.-)}%[%d%d%d%d%/%d%d%/%d%d %d+.%d+%a*(%s*.-)%]",
+                          "\\ProvidesPackage{%1}["..tkzeuclided.." "..tkzeuclidev.."%2]")
+  end
+  return content
+end
