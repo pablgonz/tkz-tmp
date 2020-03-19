@@ -6,7 +6,7 @@ Release 3.05c 2020/03/08
 
 `tkz-euclide` is a package (latex) which allows you to draw  two-dimensional
 geometric figures, in other words to create figures of Euclidean geometry.
-It uses a Cartesian coordinate system orthogonal provided by the tkz-base
+It uses a Cartesian coordinate system orthogonal provided by the `tkz-base`
 package as well as tools to define the unique coordinates of points and to
 manipulate them. The idea is to allow you to follow step by step a construction
 that would be done by hand as naturally as possible.
@@ -78,18 +78,19 @@ Other examples, en français, are on my site: [http://altermundus.fr](http://alt
 
 ## Compatibility
 
-The new version of `tkz-euclide` 3.05c is *not* fully compatible with the version
+The new version of `tkz-euclide` is *not* fully compatible with the version
 1.16 but the differences are minor.
 
 ## History
 - 3.05 correction of bugs, amelioration of the documentation.
 - 3.02 replacement french documentation by english documentation, correction of
 bugs.
-- 3.01 replacement  fp for xfp, addition of some macros, correction of bugs
+- 3.01 replacement  `fp` for `xfp`, addition of some macros, correction of bugs
 - 1.16 correction of bugs
 - 1.13 first version
 
 ## Author
+
  Alain Matthes
  5 rue de Valence
  Paris 75005
