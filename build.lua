@@ -1,4 +1,5 @@
 -- Build script for tkz-euclide
+
 module = "tkz-euclide"
 tkzeuclidev = "3.05c"
 tkzeuclided = "2020/03/08"
@@ -9,17 +10,22 @@ sourcefiledir = "code"
 docfiledir    = "doc"
 textfiles     = {"README.md"}
 ctanreadme    = "README.md"
+ctanpkg       = "tkz-euclide"
+ctanzip       = ctanpkg.."-"..tkzeuclidev
+packtdszip    = false
+flatten      = false
+cleanfiles   = {}
+
 docfiles      = {
-  "sourcedoc/*.tex",
   "cheatsheet_euclide_1.pdf",
   "Euclidean_geometry.pdf",
   "cheatsheet_euclide_2.pdf",
+  "sourcedoc/*.tex",
   "examples/*.*",
 }
 sourcefiles  = {"tkz-*.*"}
 installfiles = {"tkz-*.*"}
-flatten      = false
-cleanfiles   = {}
+
 tdslocations = {
   "doc/latex/tkz-euclide/cheatsheet_euclide_1.pdf",
   "doc/latex/tkz-euclide/Euclidean_geometry.pdf",
