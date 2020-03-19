@@ -1,4 +1,4 @@
-# tkz-euclide --- for euclidan geometry
+# tkz-euclide — for euclidan geometry
 
 Release 3.05c 2020/03/08
 
@@ -14,12 +14,15 @@ that would be done by hand as naturally as possible.
 ## Licence
 
 The scontents package may be modified and distributed under the terms and
-conditions of the LaTeX Project Public License, version 1.3c or greater.
+conditions of the [LaTeX Project Public License](https://www.latex-project.org/lppl/), version 1.3c or greater.
 
-## Features
-- needs tkz-base !!, xfp  and numprint;
-- requires and automatically loads  PGF/TikZ > 3;
-- compiles with utf8, pdflatex and lualatex;
+## Requirements
+
+The package compiles with utf8, pdflatex and lualatex, loads and depends on updated versions of:
+- [tkz-base](https://ctan.org/pkg/tkz-base)
+- [xfp](https://ctan.org/pkg/xfp)
+- [numprint](https://ctan.org/pkg/numprint)
+- [tikz](https://ctan.org/pkg/tikz)
 
 ## Installation
 
@@ -45,14 +48,14 @@ installation `TDS` tree or in your `TEXMFHOME`:
 ## How to use it
 
 To use the package `tkz-euclide`, place the following lines in the preamble of
-your LaTeX document.
+your LaTeX document:
 
 ```
 \usepackage{tkz-euclide}
 ```
 
-`\usetkzobj{all}` is no longer required with tkz-euclide but you can use it with
-other packages, `tkz-euclide` loads `tkz-base` and `TikZ`.
+The line `\usetkzobj{all}` is no longer required with `tkz-euclide` but you can use it with
+other packages.
 
 If you use the `xcolor` package, load that package before `tkz-euclide` to avoid
 package conflicts.
@@ -71,7 +74,7 @@ compile  an example.
 The archive contains a litle document about Euclidean Geometry with four
 examples.
 
-Other examples are on  my site : http://altermundus.fr (en français)
+Other examples, en français, are on my site: [http://altermundus.fr](http://altermundus.fr)
 
 ## Compatibility
 
@@ -92,4 +95,3 @@ bugs.
  Paris 75005
 
  al (dot) ma (at) mac (dot) com
-
