@@ -6,8 +6,7 @@ tkzeuclided = "2020/03/08"
 doctkzeuclv = tkzeuclidev -- Same as "3.05c"
 doctkzeucld = tkzeuclided -- Same as "2020/03/08"
 
-sourcefiledir = "code"
-docfiledir    = "doc"
+-- Setting variables for .zip file (CTAN)
 textfiles     = {"README.md"}
 ctanreadme    = "README.md"
 ctanpkg       = module
@@ -16,6 +15,9 @@ packtdszip    = false
 flatten       = false
 cleanfiles    = {}
 
+-- Setting variables for package files
+sourcefiledir = "code"
+docfiledir    = "doc"
 docfiles      = {
   "cheatsheet_euclide_1.pdf",
   "Euclidean_geometry.pdf",
@@ -26,6 +28,7 @@ docfiles      = {
 sourcefiles  = {"tkz-*.*"}
 installfiles = {"tkz-*.*"}
 
+-- Setting file locations for local instalation (TDS)
 tdslocations = {
   "doc/latex/tkz-euclide/cheatsheet_euclide_1.pdf",
   "doc/latex/tkz-euclide/Euclidean_geometry.pdf",
@@ -369,6 +372,7 @@ function update_tag(file, content, tagname, tagdate)
   return content
 end
 
+-- Typesetting package documentation
 typesetfiles = {"TKZdoc-euclide.tex"}
 
 function docinit_hook()
