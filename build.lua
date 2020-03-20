@@ -10,11 +10,11 @@ sourcefiledir = "code"
 docfiledir    = "doc"
 textfiles     = {"README.md"}
 ctanreadme    = "README.md"
-ctanpkg       = "tkz-euclide"
+ctanpkg       = module
 ctanzip       = ctanpkg.."-"..tkzeuclidev
 packtdszip    = false
-flatten      = false
-cleanfiles   = {}
+flatten       = false
+cleanfiles    = {}
 
 docfiles      = {
   "cheatsheet_euclide_1.pdf",
